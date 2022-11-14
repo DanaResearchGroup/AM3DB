@@ -1,0 +1,59 @@
+# Project information
+site_name: AM3DB
+site_description: 3D Atom Mapping Database for chemical kinetics transition state searches
+site_author: Alon Grinberg Dana
+site_url: https://DanaResearchGroup.github.io/AM3DB/
+
+# Repository
+repo_name: AM3DB
+repo_url: https://github.com/DanaResearchGroup/AM3DB
+
+# Configuration
+theme:
+  name: material
+  language: en
+  palette:
+    primary: indigo
+    accent: amber
+  icon:
+    repo: fontawesome/brands/github-alt
+  features:
+    - instant
+
+# Navigation
+nav:
+- Home: index.md
+- release.md
+- credits.md
+- cite.md
+- licence.md
+
+# Extras
+extra:
+  social:
+    - icon: fontawesome/brands/github-alt
+      link: https://github.com/DanaResearchGroup/AM3DB
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/alongd/
+
+# Google Analytics
+google_analytics:
+  - UA-16019208-2
+  - auto
+
+# Extensions
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
+
+# Extra
+extra_css:
+  - https://DanaResearchGroup.github.io/AM3DB/css/termynal.css
+  - https://DanaResearchGroup.github.io/AM3DB/css/custom.css
+extra_javascript:
+  - https://unpkg.com/mermaid@8.4.6/dist/mermaid.min.js
+  - https://DanaResearchGroup.github.io/AM3DB/js/termynal.js
+  - https://DanaResearchGroup.github.io/AM3DB/js/custom.js
