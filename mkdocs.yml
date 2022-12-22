@@ -23,6 +23,7 @@ theme:
 # Navigation
 nav:
 - Home: index.md
+- architecture.md
 - release.md
 - credits.md
 - cite.md
