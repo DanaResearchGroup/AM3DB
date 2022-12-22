@@ -12,14 +12,14 @@
         <meta name="author" content="Alon Grinberg Dana">
       
       
-        <link rel="canonical" href="https://DanaResearchGroup.github.io/AM3DB/licence/">
+        <link rel="canonical" href="https://DanaResearchGroup.github.io/AM3DB/architecture/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
-        <title>Licence - AM3DB</title>
+        <title>AM3DB Architecture - AM3DB</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#licence" class="md-skip">
+        <a href="#am3db-architecture" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Licence
+              AM3DB Architecture
             
           </span>
         </div>
@@ -232,11 +232,21 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../architecture/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         AM3DB Architecture
       </a>
+      
     </li>
   
 
@@ -292,21 +302,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../licence/" class="md-nav__link">
         Licence
       </a>
-      
     </li>
   
 
@@ -343,31 +343,31 @@
                 
                   
 
-  <a href="https://github.com/DanaResearchGroup/AM3DB/edit/master/docs/licence.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/DanaResearchGroup/AM3DB/edit/master/docs/architecture.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-<h1 id="licence">Licence<a class="headerlink" href="#licence" title="Permanent link">&para;</a></h1>
-<p>T3 is distributed free of charge under the MIT license.</p>
-<p>MIT License</p>
-<p>Copyright (c) 2019-2020 Dana Research Group</p>
-<p>Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:</p>
-<p>The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.</p>
-<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.</p>
+<h1 id="am3db-architecture">AM3DB Architecture<a class="headerlink" href="#am3db-architecture" title="Permanent link">&para;</a></h1>
+<p>The following describes how the database is designed and the attributes of reaction objects stored in it.</p>
+<p>The AMReaction object stores the following arguments in the database:</p>
+<ul>
+<li>label (str): The reaction label.</li>
+<li>multiplicity  (int): The spin multipicity of the reaction potential energy surface.</li>
+<li>charge (int): The reaction potential energy surface net electric charge.</li>
+<li>r_adjacency_lists (List[List[str]]): all representative resonance structures per reactant.</li>
+<li>p_adjacency_lists (List[List[str]]): all representative resonance structures per product.</li>
+<li>r_xyz (List[dict]): Entries represent cartesian coordinates per reactant.</li>
+<li>p_xyz (List[dict]): Entries represent cartesian coordinates per products.</li>
+<li>r_rmg_label Dict[str, int]: The reactant atom indices identified by the RMG family recipe. </li>
+<li>r_rmg_label Dict[str, int]: The product atom indices identified by the RMG family recipe.</li>
+<li>atom_maps (List[List[int]]): A comprehensive list of possible atom-maps.</li>
+<li>clustering (List[List[int]]): Storing the indices of redundant atom-maps. </li>
+<li>approved_by (List[str]): variable that represents name of person that approved reaction modeling.</li>
+<li>rejected_by (List[str]): variable that represents name of person that rejected reaction modeling.</li>
+<li>rejected_reasons (List[str]): variable that represents a comment explaining the reason for rejecting the reaction modeling.</li>
+</ul>
 
 
 
@@ -388,7 +388,7 @@ SOFTWARE.</p>
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../cite/" class="md-footer__link md-footer__link--prev" aria-label="Previous: How to cite" rel="prev">
+        <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Home" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -397,11 +397,26 @@ SOFTWARE.</p>
               <span class="md-footer__direction">
                 Previous
               </span>
-              How to cite
+              Home
             </div>
           </div>
         </a>
       
+      
+        
+        <a href="../release/" class="md-footer__link md-footer__link--next" aria-label="Next: Release notes" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Release notes
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
       
     </nav>
   
