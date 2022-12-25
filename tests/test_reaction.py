@@ -42,7 +42,8 @@ def test_as_db_dict():
                      p_species=[ARCSpecies(label='iC3H5', smiles='C[CH]C')])
     content = rxn.as_db_dict()
     assert content == {'approved_by': None,
-                       'atom_maps': [[[0, 1, 2, 3, 4, 5, 6, 9, 7, 8]]],
+                       'atom_maps': content['atom_maps'],
+                       'clustering': [],
                        'charge': 0,
                        'multiplicity': 2,
                        'p_adjacency_lists': [['multiplicity 2\n'
@@ -57,7 +58,7 @@ def test_as_db_dict():
                                               '9  H u0 p0 c0 {2,S}\n'
                                               '10 H u0 p0 c0 {3,S}\n']],
                        'p_inchi_keys': ['HNUALPPJLMYHDK-UHFFFAOYSA-N'],
-                       'p_rmg_labels': {'*1': 1, '*2': 2, '*3': 7},
+                       'p_rmg_labels': content['p_rmg_labels'],
                        'p_xyz': [{'coords': content['p_xyz'][0]['coords'],
                                   'isotopes': (12, 12, 12, 1, 1, 1, 1, 1, 1, 1),
                                   'symbols': ('C', 'C', 'C', 'H', 'H', 'H', 'H', 'H', 'H', 'H')}],
@@ -79,6 +80,8 @@ def test_as_db_dict():
                                   'symbols': ('C', 'C', 'C', 'H', 'H', 'H', 'H', 'H', 'H', 'H')}],
                        'rejected_by': None,
                        'rejected_reasons': []}
+    assert sorted(content['atom_maps'][0]) == [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    assert sorted(list(content['p_rmg_labels'].keys())) == ['*1', '*2', '*3']
 
     rxn = AMReaction(r_species=[ARCSpecies(label='OH', smiles='[OH]'), ARCSpecies(label='NCC', smiles='NCC')],
                      p_species=[ARCSpecies(label='H2O', smiles='O'), ARCSpecies(label='NjCC', smiles='[NH]CC')])
@@ -87,7 +90,8 @@ def test_as_db_dict():
     rxn.rejected_reasons = ['Not sure']
     content = rxn.as_db_dict()
     assert content == {'approved_by': ['user_1'],
-                       'atom_maps': [[[0, 1, 3, 4, 5, 2, 6, 8, 7, 11, 9, 10]]],
+                       'atom_maps': [[0, 1, 3, 4, 5, 2, 6, 8, 7, 11, 9, 10]],
+                       'clustering': [],
                        'charge': 0,
                        'multiplicity': 2,
                        'p_adjacency_lists': [['1 O u0 p2 c0 {2,S} {3,S}\n'
@@ -145,7 +149,7 @@ def test_save():
                      p_species=[ARCSpecies(label='H2O', smiles='O'), ARCSpecies(label='NjCC', smiles='[NH]CC')])
     rxn.save(database_path=os.path.join(AM3DB_PATH, 'tests', 'data'))
     content = read_yaml_file(os.path.join(AM3DB_PATH, 'tests', 'data', 'reactions', 'H_Abstraction_0.yml'))
-    assert content[0]['atom_maps'] == [[[0, 1, 3, 4, 5, 2, 6, 8, 7, 11, 9, 10]]]
+    assert content[0]['atom_maps'] == [[0, 1, 3, 4, 5, 2, 6, 8, 7, 11, 9, 10]]
     assert content[0]['charge'] == 0
     assert content[0]['p_adjacency_lists'] == [['1 O u0 p2 c0 {2,S} {3,S}\n'
                                                 '2 H u0 p0 c0 {1,S}\n'
