@@ -86,6 +86,7 @@ class AMReaction(ARCReaction):
         self.approved_by = None
         self.rejected_by = None
         self.rejected_reasons = list()
+        self.clustering = list()
 
     @property
     def index(self) -> Optional[int]:
@@ -203,7 +204,7 @@ class AMReaction(ARCReaction):
         p_xyz = [p.get_xyz() for p in self.p_species]
         atom_maps = self.atom_map
         if atom_maps is not None:
-            atom_maps = [[atom_maps]] if isinstance(atom_maps[0], int) else atom_maps
+            atom_maps = [atom_maps] if isinstance(atom_maps[0], int) else atom_maps
 
         return {'multiplicity': self.multiplicity,  # int
                 'charge': self.charge,  # int
@@ -215,7 +216,8 @@ class AMReaction(ARCReaction):
                 'p_xyz': p_xyz,  # List[dict]
                 'r_rmg_labels': reactant_index_dict,  # Dict[str, int]
                 'p_rmg_labels': product_index_dict,  # Dict[str, int]
-                'atom_maps': atom_maps,  # List[List[List[int]]]
+                'atom_maps': atom_maps,  # List[List[int]]
+                'clustering': self.clustering,  # List[List[int]]
                 'approved_by': self.approved_by,  # List[str]
                 'rejected_by': self.rejected_by,  # List[str]
                 'rejected_reasons': self.rejected_reasons,  # List[str]
