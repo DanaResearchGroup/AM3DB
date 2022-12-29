@@ -236,6 +236,7 @@ class AMReaction(ARCReaction):
         Args:
             print_atom_map (bool, optional): Whether to print the atom map.
         """
+        display(self.rmg_reaction.copy())
         num_reactants, num_products = len(self.r_species), len(self.p_species)
         viewer = grid_viewer(viewer_grid=(1, num_reactants), viewer_size=(500 * num_reactants, 400))
         for i in range(num_reactants):
