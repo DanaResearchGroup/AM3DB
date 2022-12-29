@@ -95,21 +95,21 @@ class Logger(object):
         Output a header to the log.
         """
         self.log(f'AM3DB execution initiated on {time.asctime()}\n\n'
-                 f'################################################################\n'
-                 f'#                                                              #\n'
-                 f'#                  The   Tandem   Tool   (T3)                  #\n'
-                 f'#      Automated kinetic model generation and refinement       #\n'
-                 f'#                                                              #\n'
-                 f'#                        Version: {VERSION}{" " * (10 - len(VERSION))}                   #\n'
-                 f'#                                                              #\n'
+                 f'###############################################################\n'
+                 f'#                                                             #\n'
+                 f'#                            AM3DB                            #\n'
+                 f'#                  3D Atom Mapping Database                   #\n'
+                 f'#                                                             #\n'
+                 f'#                       Version: {VERSION}{" " * (10 - len(VERSION))}                   #\n'
+                 f'#                                                             #\n'
                  f'################################################################\n\n',
                  level='always')
 
-        # Extract HEAD git commit from T3
+        # Extract HEAD git commit from AM3DB
         head, date = get_git_commit(path=AM3DB_PATH)
         branch_name = get_git_branch(path=AM3DB_PATH)
         if head != '' and date != '':
-            self.log(f'The current git HEAD for T3 is:\n'
+            self.log(f'The current git HEAD for AM3DB is:\n'
                      f'    {head}\n    {date}',
                      level='always')
         if branch_name and branch_name != 'main':
@@ -117,4 +117,4 @@ class Logger(object):
                      level='always')
         else:
             self.log('\n', level='always')
-        self.log(f'Starting project {self.project}', level='always')
+        self.log(f'Starting project: "{self.project}"', level='always')

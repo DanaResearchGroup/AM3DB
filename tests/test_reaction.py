@@ -170,3 +170,66 @@ def test_save():
     shutil.copy(src=os.path.join(AM3DB_PATH, 'tests', 'data', 'reactions', 'H_Abstraction_0_back.yml'),
                 dst=os.path.join(AM3DB_PATH, 'tests', 'data', 'reactions', 'H_Abstraction_0.yml'))
     os.remove(os.path.join(AM3DB_PATH, 'tests', 'data', 'reactions', 'H_Abstraction_0_back.yml'))
+
+
+def test_p_number_from_am_index():
+    """Test the _p_number_from_am_index() method"""
+    rxn_1 = AMReaction(r_species=[ARCSpecies(label='CH3', smiles='[CH3]'), ARCSpecies(label='CH4', smiles='C')],
+                       p_species=[ARCSpecies(label='CH4', smiles='C'), ARCSpecies(label='CH3', smiles='[CH3]')])
+    assert rxn_1.atom_map[0] == 5
+    assert rxn_1.atom_map[4] == 0
+    assert rxn_1._p_number_from_am_index(0) == 1
+    assert rxn_1._p_number_from_am_index(4) == 0
+
+    rxn_2 = AMReaction(r_species=[ARCSpecies(label='pentadiene', smiles='C=CCC=C'),
+                                  ARCSpecies(label='decalin_rad', smiles='C1CC[C]2CCCCC2C1')],
+                       p_species=[ARCSpecies(label='decalin', smiles='C1CCC2CCCCC2C1'),
+                                  ARCSpecies(label='pentadieneyl', smiles='C=C[CH]C=C')])
+    assert rxn_2._p_number_from_am_index(0) == 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
